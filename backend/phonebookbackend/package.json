@@ -11,6 +11,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
+  "eslintIgnore": [
+    "dist/**",
+    "build/**",
+    "node_modules/**",
+    "src/tests/**",
+    "mongo.js",
+    "package.json",
+    "package-lock.json"
+  ],
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",

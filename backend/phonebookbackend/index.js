@@ -3,6 +3,19 @@ const morgan = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 const Person = require("./models/person");
+const mongoose = require('mongoose');
+
+const url = process.env.MONGODB_URI
+
+console.log('Connecting to MongoDB');
+mongoose
+  .connect(url)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error.message);
+  })
 
 const app = express();
 

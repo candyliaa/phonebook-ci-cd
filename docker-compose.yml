@@ -1,0 +1,27 @@
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: phonebook-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: phonebook
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend/phonebookbackend
+    container_name: phonebook-backend
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      MONGODB_URI: mongodb://mongo:27017/phonebook
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend/phonebookbackend:/app
+    command: npm run start
+
+volumes:
+  mongo-data:

@@ -18,8 +18,9 @@ const App = () => {
   const hook = () => {
     personService
       .getAll()
-      .then(response => {
-        setPersons(response.data)
+      .then(persons => {
+        console.log('Fetched persons:', persons.data)
+        setPersons(persons.data)
       })
   }
 

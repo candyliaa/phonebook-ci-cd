@@ -22,7 +22,9 @@ const app = express()
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
-app.use(express.static('dist'))
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('dist'))
+}
 
 app.get('/api/persons', (request, response) => {
   Person.find({}).then((result) => {
